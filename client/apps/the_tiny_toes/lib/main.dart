@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'core/providers/auth_provider.dart';
 
+import 'features/auth/login_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'The Tiny toes',
         theme: ThemeData(primarySwatch: Colors.pink, useMaterial3: true),
-        home: const Placeholder(),
+        home: const LoginScreen(),
       ),
     );
   }
