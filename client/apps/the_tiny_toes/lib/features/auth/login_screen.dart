@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/providers/auth_provider.dart';
-import '../../screens/users_screen.dart';
+import '../../screens/users_screen.dart'; // Correct path for users screen
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,13 +15,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _handleLogin() {
+  Future<void> _handleLogin() async {
     final username = _usernameController.text.trim();
     final password = _passwordController.text.trim();
 
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-
-    final success = authProvider.login(username, password);
+    final success = await authProvider.login(username, password); // ✅ await
 
     if (success) {
       Navigator.pushReplacement(
