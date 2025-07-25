@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:the_tiny_toes/core/providers/users_provider.dart';
 
 import 'core/providers/auth_provider.dart';
+import 'core/providers/album_provider.dart';
 
 import 'features/auth/login_screen.dart';
 import 'screens/users_screen.dart';
@@ -17,7 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => UsersProvider()),
+        ChangeNotifierProvider(create: (_) => AlbumsProvider()),
+      ],
       child: const MaterialAppWrapper(),
     );
   }
