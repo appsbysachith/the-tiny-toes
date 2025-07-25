@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../core/providers/photos_provider.dart';
+
+class GalleryScreen extends StatefulWidget {
+  final int albumId;
+
+  const GalleryScreen({super.key, required this.albumId});
+
+  @override
+  State<GalleryScreen> createState() => _GalleryScreenState();
+}
+
+class _GalleryScreenState extends State<GalleryScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PhotosProvider>(
+      context,
+      listen: false,
+    ).fetchPhotos(widget.albumId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = Provider.of<PhotosProvider>(context);
+    final state = provider.state;
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('Gallery')),
+      body: switch (state) {
+        PhotosState.loading => const Center(child: CircularProgressIndicator()),
+        PhotosState.error => Center(
+          child: Text(provider.errorMessage ?? 'Error loading photos'),
+        ),
+        PhotosState.success => GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          ),
+          itemCount: provider.photos.length,
+          itemBuilder: (context, index) {
+            final photo = provider.photos[index];
+            return GestureDetector(
+              onTap: () {
+                // We’ll implement photo view in Task #10
+              },
+              child: Image.network(photo['thumbnailUrl'], fit: BoxFit.cover),
+            );
+          },
+        ),
+        _ => const SizedBox(),
+      },
+    );
+  }
+}

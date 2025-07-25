@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../core/providers/album_provider.dart';
+import '../gallery/gallery_screen.dart'; // ✅ Import the gallery screen
 
 class AlbumsScreen extends StatefulWidget {
   final int userId;
@@ -40,6 +42,15 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
             return ListTile(
               leading: const Icon(Icons.photo_album),
               title: Text(album['title']),
+              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => GalleryScreen(albumId: album['id']),
+                  ),
+                );
+              },
             );
           },
         ),

@@ -5,6 +5,7 @@ import 'package:the_tiny_toes/core/providers/users_provider.dart';
 
 import 'core/providers/auth_provider.dart';
 import 'core/providers/album_provider.dart';
+import 'core/providers/photos_provider.dart';
 
 import 'features/auth/login_screen.dart';
 import 'screens/users_screen.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => UsersProvider()),
         ChangeNotifierProvider(create: (_) => AlbumsProvider()),
+        ChangeNotifierProvider(create: (_) => PhotosProvider()),
       ],
       child: const MaterialAppWrapper(),
     );
