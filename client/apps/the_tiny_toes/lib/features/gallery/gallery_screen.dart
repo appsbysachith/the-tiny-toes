@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/providers/photos_provider.dart';
+import "../gallery/photo_detail_screen.dart";
 
 class GalleryScreen extends StatefulWidget {
   final int albumId;
@@ -45,7 +46,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
             final photo = provider.photos[index];
             return GestureDetector(
               onTap: () {
-                // We’ll implement photo view in Task #10
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => PhotoDetailScreen(photo: photo),
+                  ),
+                );
               },
               child: Image.network(photo['thumbnailUrl'], fit: BoxFit.cover),
             );
