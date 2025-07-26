@@ -17,10 +17,12 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<AlbumsProvider>(
-      context,
-      listen: false,
-    ).fetchAlbums(widget.userId);
+    Future.microtask(() {
+      Provider.of<AlbumsProvider>(
+        context,
+        listen: false,
+      ).fetchAlbums(widget.userId);
+    });
   }
 
   @override

@@ -15,6 +15,8 @@ class UsersProvider with ChangeNotifier {
   String? get errorMessage => _errorMessage;
 
   Future<void> fetchUsers() async {
+    if (_users.isNotEmpty) return;
+
     _state = UsersState.loading;
     notifyListeners();
 

@@ -16,10 +16,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<PhotosProvider>(
-      context,
-      listen: false,
-    ).fetchPhotos(widget.albumId);
+    Future.microtask(() {
+      Provider.of<PhotosProvider>(
+        context,
+        listen: false,
+      ).fetchPhotos(widget.albumId);
+    });
   }
 
   @override

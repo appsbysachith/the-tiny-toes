@@ -15,6 +15,7 @@ class AlbumsProvider with ChangeNotifier {
   String? get errorMessage => _errorMessage;
 
   Future<void> fetchAlbums(int userId) async {
+    if (_albums.isNotEmpty) return;
     _state = AlbumsState.loading;
     notifyListeners();
 
