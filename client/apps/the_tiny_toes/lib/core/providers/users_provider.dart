@@ -21,7 +21,10 @@ class UsersProvider with ChangeNotifier {
     notifyListeners();
 
     try {
-      final data = await _networkService.get('/users');
+      final data = await _networkService.get(
+        '/users',
+        headers: {'User-Agent': 'FlutterApp'},
+      );
       _users = data;
       _state = UsersState.success;
     } catch (e) {

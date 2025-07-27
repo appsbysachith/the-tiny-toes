@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_tiny_toes/shared/widgets/shared_navbar.dart';
 
 class PhotoDetailScreen extends StatelessWidget {
   final Map<String, dynamic> photo;
@@ -8,7 +9,8 @@ class PhotoDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Photo Details')),
+      appBar: SharedNavbar(title: "Photo screen"),
+
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

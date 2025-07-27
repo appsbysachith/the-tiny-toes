@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:the_tiny_toes/shared/widgets/shared_navbar.dart';
 
 import '../../core/providers/auth_provider.dart';
-import '../../screens/users_screen.dart'; // Correct path for users screen
+import '../../screens/users_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,7 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login'), centerTitle: true),
+      appBar: SharedNavbar(title: "Login screen"),
+
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(

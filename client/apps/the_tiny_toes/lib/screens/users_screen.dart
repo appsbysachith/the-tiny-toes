@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:the_tiny_toes/shared/widgets/shared_navbar.dart';
 
 import '../../core/providers/users_provider.dart';
 import '../features/albums/album_screen.dart';
@@ -27,7 +28,8 @@ class _UsersScreenState extends State<UsersScreen> {
         final state = provider.state;
 
         return Scaffold(
-          appBar: AppBar(title: const Text('Users')),
+          appBar: SharedNavbar(title: "Users screen"),
+
           body: switch (state) {
             UsersState.loading => const Center(
               child: CircularProgressIndicator(),

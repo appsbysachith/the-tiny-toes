@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:the_tiny_toes/shared/widgets/shared_navbar.dart';
 
 import '../../core/providers/album_provider.dart';
 import '../gallery/gallery_screen.dart'; // ✅ Import the gallery screen
@@ -31,7 +32,8 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
     final state = provider.state;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Albums')),
+      appBar: SharedNavbar(title: "Album screen"),
+
       body: switch (state) {
         AlbumsState.loading => const Center(child: CircularProgressIndicator()),
         AlbumsState.error => Center(

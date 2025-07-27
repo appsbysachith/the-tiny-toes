@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:the_tiny_toes/shared/widgets/shared_navbar.dart';
 import '../../core/providers/photos_provider.dart';
 import "../gallery/photo_detail_screen.dart";
 
@@ -30,7 +31,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
     final state = provider.state;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Gallery')),
+      appBar: SharedNavbar(title: "Gallery screen"),
+
       body: switch (state) {
         PhotosState.loading => const Center(child: CircularProgressIndicator()),
         PhotosState.error => Center(
